@@ -1,0 +1,3 @@
+    DEFINE	EVO_RS232	1
+    DEFINE	SNAFILE	"terminal-evo-rs232.sna"
+    include 	"startup.asm"

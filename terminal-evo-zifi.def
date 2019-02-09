@@ -1,0 +1,3 @@
+    DEFINE	EVO_ZIFI	1
+    DEFINE	SNAFILE	"terminal-evo-zifi.sna"
+    include "startup.asm"
