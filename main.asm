@@ -3,7 +3,14 @@
 	include "main.mac"
 	include "z80-sdk/strings/strings.mac"
 	include "z80-sdk/windows_bmw/wind.mac"
+
+	IFDEF	EVO_ZIFI
 	include "z80-sdk/sockets/uart_zifi.mac"
+	ENDIF
+
+	IFDEF	EVO_RS232
+	include "z80-sdk/sockets/uart_evo_rs232.mac"
+	ENDIF
 
 ;- MAIN PROCEDURE -
 PROG	
@@ -37,7 +44,7 @@ mloop   CALL	check_rcv
 	CP	13		;//enter key pressed
 	JZ	enterkeytermmode
 	CALL	puttotermbufer	;//put char to command bufer and print
-	;_SendChar
+	_SendChar
 	JP	mloop
 cmdmodeproc ;process comman mode
 	POP	AF
@@ -111,22 +118,21 @@ enterkeytermmode	;enter key pressed in terminal window
 	LD	B,A
 	LD	A,13		;/add 13 code for <CR><LF> EOL command
 	LD	(HL),A
+	_SendChar
 	INC	HL
 	LD	A,10		;/add 10 code for <CR><LF> EOL command
 	LD	(HL),A
+	_SendChar
 	INC	HL
 	XOR	A
 	LD	(HL),A
 	LD	HL,input_bufer
-;	PUSH	HL
-;	_prints input_bufer
-;	POP	HL
-1	LD	A,(HL)
-	OR	A
-	JZ	ekcm_nc
-	_SendChar
-	INC	HL
-	JR	1b
+;1	LD	A,(HL)
+;	OR	A
+;	JZ	ekcm_nc
+;	_SendChar
+;	INC	HL
+;	JR	1b
 
 ekcm_nc	_fillzero input_bufer,255
 	_cur_off
@@ -158,9 +164,14 @@ fillzero
 
 init	XOR	A
 	LD 	(mode),A	;set terminal mode
+	IFDEF	EVO_ZIFI
 	_init_zifi
 	RET	Z
 	_prints msg_nozifi
+	ENDIF
+	IFDEF	EVO_RS232
+	_init_uart
+	ENDIF
 	RET
 
 
@@ -172,7 +183,7 @@ INCCNTR LD	A,(im_cntr)
 	RET
 
 //check receve info from connection
-check_rcv	;
+check_rcv;
 	LD	A,(im_cntr)
 ;	call	wind.A_HEX
 	AND	#F0
@@ -181,8 +192,13 @@ check_rcv	;
 	LD	(im_cntr),A
 	_istermmode
 	RET	NZ		;//if terminal mode, then no print error status
+	IFDEF 	EVO_ZIFI
 rcv1	_input_fifo_status
 	OR	A
+	ENDIF
+	IFDEF	EVO_RS232
+rcv1	_HaveRXData
+	ENDIF
 	RET	Z		;//Return if zero
 ;	push	AF		;//debug
 ;	CALL	wind.A_HEX
@@ -192,7 +208,12 @@ rcv1	_input_fifo_status
 	JR	rcv1
 
 	include "maindata.asm"
+	IFDEF	EVO_ZIFI
 	include "z80-sdk/sockets/uart_zifi.a80"
+	ENDIF
+	IFDEF	EVO_RS232
+	include "z80-sdk/sockets/uart_evo_rs232.a80"
+	ENDIF
 	include "z80-sdk/strings/strings.a80"
 
 	endmodule

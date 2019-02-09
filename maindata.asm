@@ -23,6 +23,7 @@ wnd_cmd
 
 
 msg_keys
+	DB '!!! HAVE SOME BUGS !!!!',13,13,13
 	DB '!!! NOT WORKING YET !!!!',13,13,13
 	IFDEF EVO_ZIFI
         DB '* Terminal for ZX Evo ZIFI *',13,13
