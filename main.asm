@@ -184,12 +184,12 @@ INCCNTR LD	A,(im_cntr)
 
 //check receve info from connection
 check_rcv;
-	LD	A,(im_cntr)
-;	call	wind.A_HEX
-	AND	#F0
-	RET	Z		;skip N tick's
-	XOR	A
-	LD	(im_cntr),A
+;	LD	A,(im_cntr)
+;;	call	wind.A_HEX
+;	AND	#F0
+;	RET	Z		;skip N tick's
+;	XOR	A
+;	LD	(im_cntr),A
 	_istermmode
 	RET	NZ		;//if terminal mode, then no print error status
 	IFDEF 	EVO_ZIFI
@@ -197,7 +197,10 @@ rcv1	_input_fifo_status
 	OR	A
 	ENDIF
 	IFDEF	EVO_RS232
-rcv1	_HaveRXData
+rcv1	call uart_evo_rs232.OEStatus
+	JZ	1f
+	_prints msg_rx_owerflow
+1	_HaveRXData
 	ENDIF
 	RET	Z		;//Return if zero
 ;	push	AF		;//debug

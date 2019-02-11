@@ -57,6 +57,7 @@ inc_addr 	DB 0
 
 
 msg_nozifi	DB 'No Zifi connected!',0
+msg_rx_owerflow DB 13,'RX FIFO Owerflow!',13,0
 
 cmd_open  	DB 'open',0
 cmd_close 	DB 'close',0
