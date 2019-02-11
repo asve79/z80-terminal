@@ -1,3 +1,5 @@
 	DEFINE	EVO_RS232	1
 	DEFINE	SNAFILE		"terminal-evo-rs232.sna"
+	DEFINE	HOBFILE		"terme232.$c"
+	DEFINE	HOBFILEIN	"terme232.C"
 	include	startup.asm
