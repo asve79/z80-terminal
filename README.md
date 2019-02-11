@@ -12,6 +12,7 @@ Terminal for RS232 and ZIFI (eRS) direct port communication
 * ZX Evolution Zifi (eRS) port version (current version have some logical bugs at this time)
 
 ## To do
+* ZX Evolution TS-CONF version
 * Profi port version
 
 ## Build
