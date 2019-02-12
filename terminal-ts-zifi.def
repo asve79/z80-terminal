@@ -1,0 +1,6 @@
+	DEFINE	TS_ZIFI		1
+	DEFINE	SNAFILE		"terminal-ts-zifi.sna"
+	DEFINE	HOBFILE		"termezi.$c"
+	DEFINE	HOBFILEIN	"termezi.C"
+
+	include	startup.asm
