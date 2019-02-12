@@ -170,6 +170,7 @@ init	XOR	A
 	_prints msg_nozifi
 	ENDIF
 	IFDEF	EVO_RS232
+	LD	HL,1		;//1 - is dividder for 115200 speed
 	_init_uart
 	ENDIF
 	RET
@@ -197,7 +198,7 @@ rcv1	_input_fifo_status
 	OR	A
 	ENDIF
 	IFDEF	EVO_RS232
-rcv1	call uart_evo_rs232.OEStatus
+rcv1	_Check_RX_Owerflow
 	JZ	1f
 	_prints msg_rx_owerflow
 1	_HaveRXData
