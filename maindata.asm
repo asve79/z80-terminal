@@ -24,8 +24,6 @@ wnd_cmd
 
 msg_keys
 	IFDEF TS_ZIFI
-	DB '!!! HAVE SOME BUGS !!!!',13,13,13
-	DB '!!! NOT WORKING YET !!!!',13,13,13
         DB '* Terminal for TS-CONF ZIFI *',13,13
 	ENDIF
 	IFDEF EVO_RS232

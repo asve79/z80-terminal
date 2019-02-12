@@ -45,6 +45,8 @@ mloop   CALL	check_rcv
 	JZ	enterkeytermmode
 	CALL	puttotermbufer	;//put char to command bufer and print
 	_SendChar
+;	LD	A,"*"
+;	_printc
 	JP	mloop
 cmdmodeproc ;process comman mode
 	POP	AF
