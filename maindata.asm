@@ -5,8 +5,8 @@ wnd_main
 	DB 00000011B
 	DB 0,0
 	DB 0
-	IFDEF EVO_ZIFI
-	DB 1,'Terminal v0.0.1 (EVO ZIFI build)',0
+	IFDEF TS_ZIFI
+	DB 1,'Terminal v0.0.1 (TS-CONF ZIFI build)',0
 	ENDIF
 	IFDEF EVO_RS232
 	DB 1,'Terminal v0.0.1 (EVO RS232 build )',0
@@ -23,10 +23,10 @@ wnd_cmd
 
 
 msg_keys
+	IFDEF TS_ZIFI
 	DB '!!! HAVE SOME BUGS !!!!',13,13,13
 	DB '!!! NOT WORKING YET !!!!',13,13,13
-	IFDEF EVO_ZIFI
-        DB '* Terminal for ZX Evo ZIFI *',13,13
+        DB '* Terminal for TS-CONF ZIFI *',13,13
 	ENDIF
 	IFDEF EVO_RS232
         DB '* Terminal for ZX Evo RS232 *',13,13

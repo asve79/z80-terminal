@@ -4,8 +4,8 @@
 	include "z80-sdk/strings/strings.mac"
 	include "z80-sdk/windows_bmw/wind.mac"
 
-	IFDEF	EVO_ZIFI
-	include "z80-sdk/sockets/uart_zifi.mac"
+	IFDEF	TS_ZIFI
+	include "z80-sdk/sockets/uart_ts_zifi.mac"
 	ENDIF
 
 	IFDEF	EVO_RS232
@@ -164,7 +164,7 @@ fillzero
 
 init	XOR	A
 	LD 	(mode),A	;set terminal mode
-	IFDEF	EVO_ZIFI
+	IFDEF	TS_ZIFI
 	_init_zifi
 	RET	Z
 	_prints msg_nozifi
@@ -192,7 +192,7 @@ check_rcv;
 ;	LD	(im_cntr),A
 	_istermmode
 	RET	NZ		;//if terminal mode, then no print error status
-	IFDEF 	EVO_ZIFI
+	IFDEF 	TS_ZIFI
 rcv1	_input_fifo_status
 	OR	A
 	ENDIF
@@ -211,8 +211,8 @@ rcv1	call uart_evo_rs232.OEStatus
 	JR	rcv1
 
 	include "maindata.asm"
-	IFDEF	EVO_ZIFI
-	include "z80-sdk/sockets/uart_zifi.a80"
+	IFDEF	TS_ZIFI
+	include "z80-sdk/sockets/uart_ts_zifi.a80"
 	ENDIF
 	IFDEF	EVO_RS232
 	include "z80-sdk/sockets/uart_evo_rs232.a80"

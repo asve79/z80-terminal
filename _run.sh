@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#prog=terminal-evo-zifi.sna
+#prog=terminal-ts-zifi.sna
 prog=terminal-evo-rs232.sna
 
 sna=terminal.sna

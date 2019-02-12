@@ -8,12 +8,12 @@ Terminal for RS232 and ZIFI (eRS) direct port communication
 * Emulator: https://github.com/tslabs/zx-evo/raw/master/pentevo/unreal/Unreal/bin/unreal.7z or https://github.com/asve79/Xpeccy
 
 ## In progress
-* ZX Evolution RS232 port Version (testing...)
-* ZX Evolution Zifi (eRS) port version (current version have some logical bugs at this time)
+* ZX Evolution TS-CONF RS232 port Version
+* ZX Evolution TS-CONF Zifi (eRS) port version (current version have some logical bugs at this time)
+* Profi version
 
-## To do
-* ZX Evolution TS-CONF version
-* Profi port version
+## Testing
+* ZX Evolution Base RS232 port Version (testing...)
 
 ## Build
 Assembler:  https://github.com/z00m128/sjasmplus
