@@ -8,6 +8,9 @@ wnd_main
 	IFDEF TS_ZIFI
 	DB 1,'Terminal v0.0.1 (TS-CONF ZIFI build)',0
 	ENDIF
+	IFDEF TS_RS232
+	DB 1,'Terminal v0.0.1 (TS-CONF RS232 build)',0
+	ENDIF
 	IFDEF EVO_RS232
 	DB 1,'Terminal v0.0.1 (EVO RS232 build )',0
 	ENDIF
@@ -26,8 +29,12 @@ msg_keys
 	IFDEF TS_ZIFI
         DB '* Terminal for TS-CONF ZIFI *',13,13
 	ENDIF
+	IFDEF TS_RS232
+        DB '* Terminal for TS-CONF RS232 *',13,13
+	ENDIF
 	IFDEF EVO_RS232
-        DB '* Terminal for ZX Evo RS232 *',13,13
+        DB '* Terminal for ZX Evo RS232 *',13
+        DB "Kondratiev's UART theme",13,13
 	ENDIF
         DB 'Press SS+Q for exit.',13
         DB 'Press SS+W for command menu',13
@@ -47,14 +54,19 @@ msg_about
 	DB 13,'------'
 	DB 13,'Application by asve (asve@ae-nest.com)'
 	DB 13,'Window libs by https://github.com/mborisov1'
-	DB 13,'Socket libs by https://github.com/HackerVBI'
 	DB 13,13,0
 
 mode		DB 0
 inc_addr 	DB 0
 
+	IFDEF TS_RS232
+msg_notsrs	DB 'No RS module ts-conf theme connected',0
+	ENDIF
 
+	IFDEF TS_ZIFI
 msg_nozifi	DB 'No Zifi connected!',0
+	ENDIF
+
 msg_rx_owerflow DB 13,'RX FIFO Owerflow!',13,0
 
 cmd_open  	DB 'open',0

@@ -10,13 +10,10 @@ Terminal(s) for RS232 and ZIFI uart communication
 ## Done
 * ZX Evolution Base RS232 port Version
 * ZX Evolution TS-CONF Zifi (eRS) port version
+* ZX Evolution TS-CONF RS232 port Version
 
 ## Testing
 * Profi RS232 (terme232.$c in hobeta file)
-
-## In progress
-* ZX Evolution TS-CONF RS232 port Version
-
 
 ## Build
 Assembler:  https://github.com/z00m128/sjasmplus

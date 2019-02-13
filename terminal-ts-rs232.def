@@ -1,0 +1,6 @@
+	DEFINE	TS_RS232	1
+	DEFINE	SNAFILE		"terminal-ts-rs232.sna"
+	DEFINE	HOBFILE		"termt232.$c"
+	DEFINE	HOBFILEIN	"termt232.C"
+
+	include	startup.asm

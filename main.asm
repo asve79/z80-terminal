@@ -7,7 +7,9 @@
 	IFDEF	TS_ZIFI
 	include "z80-sdk/sockets/uart_ts_zifi.mac"
 	ENDIF
-
+	IFDEF	TS_RS232
+	include "z80-sdk/sockets/uart_ts_rs232.mac"
+	ENDIF
 	IFDEF	EVO_RS232
 	include "z80-sdk/sockets/uart_evo_rs232.mac"
 	ENDIF
@@ -171,6 +173,11 @@ init	XOR	A
 	RET	Z
 	_prints msg_nozifi
 	ENDIF
+	IFDEF	TS_RS232
+	_init_rs232
+	RET	Z
+	_prints msg_notsrs
+	ENDIF
 	IFDEF	EVO_RS232
 	LD	HL,1		;//1 - is dividder for 115200 speed
 	_init_uart
@@ -199,6 +206,10 @@ check_rcv;
 rcv1	_input_fifo_status
 	OR	A
 	ENDIF
+	IFDEF 	TS_RS232
+rcv1	_input_fifo_status
+	OR	A
+	ENDIF
 	IFDEF	EVO_RS232
 rcv1	_Check_RX_Owerflow
 	JZ	1f
@@ -216,6 +227,9 @@ rcv1	_Check_RX_Owerflow
 	include "maindata.asm"
 	IFDEF	TS_ZIFI
 	include "z80-sdk/sockets/uart_ts_zifi.a80"
+	ENDIF
+	IFDEF	TS_RS232
+	include "z80-sdk/sockets/uart_ts_rs232.a80"
 	ENDIF
 	IFDEF	EVO_RS232
 	include "z80-sdk/sockets/uart_evo_rs232.a80"
