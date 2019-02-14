@@ -1,7 +1,7 @@
 #!/bin/sh
 
-prog=terminal-ts-zifi.sna
-#prog=terminal-evo-rs232.sna
+#prog=terminal-ts-zifi.sna
+prog=terminal-evo-rs232.sna
 #prog=terminal-ts-rs232
 
 sna=terminal.sna

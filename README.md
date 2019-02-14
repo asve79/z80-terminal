@@ -24,3 +24,7 @@ cd z80-termianl
 ./get_depencies.sh
 ./_make.sh
 ```
+
+## Demo:
+![Demo](https://github.com/asve79/z80-terminal/blob/master/demo/terminal-evo-rs232.gif)
+![Demo](https://github.com/asve79/z80-terminal/blob/master/demo/terminal-tsconf-zifi.gif)
